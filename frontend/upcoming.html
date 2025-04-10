@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Live Scores</title>
+   <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+    background-color: #0073e6;
+    color: #fff;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 24px;
+    margin-left: 20px;
+    animation: slideIn 1s ease;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+    gap: 20px;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ffd700;
+}
+
+main {
+    margin-top: 100px;
+    width: 90%;
+    max-width: 1000px;
+}
+
+.score-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeInUp 1s ease;
+    font-size: 20px; /* Increase font size */
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card h2 {
+    color: #0073e6;
+    font-size: 28px; /* Increase font size */
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #333;
+    font-size: 22px; /* Increase font size */
+    margin: 15px 0;
+}
+
+.card .time {
+    font-size: 20px; /* Increase font size */
+    color: #888;
+    animation: pulse 1.5s infinite;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.buttons button {
+    background-color: #0073e6;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.buttons button:hover {
+    background-color: #005bb5;
+}
+
+footer {
+    background-color: #0073e6;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+    position: fixed;
+    bottom: 0;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+    background-color: #e0e0e0;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.image-grid img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.image-grid img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.image-grid p {
+    grid-column: span 3;
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+   </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <div class="logo">CricketLive</div>
+        <nav>
+            <ul>
+                <li><a href="#">Matches</a></li>
+                <li><a href="#">Teams</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Fantasy</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Score Cards Section -->
+    <main>
+        <section class="score-cards">
+            <div class="card">
+                <h2>Asia Cup - T20I</h2>
+                <p>India vs Pakistan</p>
+                <span class="time">Starts in 1hr 39min</span>
+                <div class="buttons">
+                    <button>Schedule</button>
+                    <button>Table</button>
+                    <button>Fantasy</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Asia Cup - T20I</h2>
+                <p>Afghanistan: 176/6</p>
+                <p>Sri Lanka: 179/4 (Win by 6 Wickets)</p>
+                <div class="buttons">
+                    <button>Schedule</button>
+                    <button>Table</button>
+                    <button>Fantasy</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Women’s Hundred</h2>
+                <p>Trinbago Knight Riders vs Barbados Royals</p>
+                <span class="time">Tomorrow, 12:00 AM</span>
+                <div class="buttons">
+                    <button>Schedule</button>
+                    <button>Table</button>
+                    <button>Fantasy</button>
+                </div>
+            </div>
+
+            <!-- Add more cards here -->
+            <div class="card">
+                <h2>IPL - T20</h2>
+                <p>Chennai Super Kings vs Mumbai Indians</p>
+                <span class="time">Starts in 2hr 15min</span>
+                <div class="buttons">
+                    <button>Schedule</button>
+                    <button>Table</button>
+                    <button>Fantasy</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Big Bash League</h2>
+                <p>Melbourne Stars vs Sydney Sixers</p>
+                <span class="time">Tomorrow, 3:00 PM</span>
+                <div class="buttons">
+                    <button>Schedule</button>
+                    <button>Table</button>
+                    <button>Fantasy</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>PSL - T20</h2>
+                <p>Karachi Kings vs Lahore Qalandars</p>
+                <span class="time">Starts in 4hr 30min</span>
+                <div class="buttons">
+                    <button>Schedule</button>
+                    <button>Table</button>
+                    <button>Fantasy</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>County Championship</h2>
+                <p>Surrey vs Middlesex</p>
+                <span class="time">Tomorrow, 11:00 AM</span>
+                <div class="buttons">
+                    <button>Schedule</button>
+                    <button>Table</button>
+                    <button>Fantasy</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Ranji Trophy</h2>
+                <p>Mumbai vs Delhi</p>
+                <span class="time">Starts in 5hr 45min</span>
+                <div class="buttons">
+                    <button>Schedule</button>
+                    <button>Table</button>
+                    <button>Fantasy</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Super Smash</h2>
+                <p>Wellington Firebirds vs Auckland Aces</p>
+                <span class="time">Tomorrow, 1:00 PM</span>
+                <div class="buttons">
+                    <button>Schedule</button>
+                    <button>Table</button>
+                    <button>Fantasy</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Vitality Blast</h2>
+                <p>Nottinghamshire vs Lancashire</p>
+                <span class="time">Starts in 6hr 10min</span>
+                <div class="buttons">
+                    <button>Schedule</button>
+                    <button>Table</button>
+                    <button>Fantasy</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Images and content about cricket -->
+        <section class="image-grid">
+            <img src="/cricket_folder/assets/Screenshot 2024-10-29 193648.png" alt="Cricket Image 1">
+            <img src="/cricket_folder/assets/2.png" alt="Cricket Image 2">
+            <img src="/cricket_folder/assets/3.png" alt="Cricket Image 3">
+            <img src="/cricket_folder/assets/4.png" alt="Cricket Image 4">
+            <img src="/cricket_folder/assets/5.png" alt="Cricket Image 5">
+            <img src="/cricket_folder/assets/6.png" alt="Cricket Image 6">
+            <p>
+                Cricket is a bat-and-ball game played between two teams of eleven players on a field at the center of which is a 22-yard pitch with a wicket at each end, each comprising two bails balanced on three stumps. The batting side scores runs by striking the ball bowled at the wicket with the bat, while the bowling and fielding side tries to prevent this and dismiss each player. Means of dismissal include being bowled, when the ball hits the stumps and dislodges the bails, and by the fielding side catching the ball after it is hit by the bat, but before it hits the ground. When ten players have been dismissed, the innings ends and the teams swap roles. The game is adjudicated by two umpires, aided by a third umpire and match referee in international matches.
+            </p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>Powered by CricketLive | All Rights Reserved</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,218 @@
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dropdown Sidebar - Tivotal</title>
+
+    <!--font awesome-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+
+    <!--css file-->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="sidebar close">
+      <div class="logo">
+        <i class="fab fa-trade-federation"></i>
+        <span class="logo-name">Kaynes</span>
+      </div>
+
+      <ul class="nav-list">
+        <li>
+          <a href="#">
+            <i class="fab fa-microsoft"></i>
+            <span class="link-name">Dashboard</span>
+          </a>
+
+          <ul class="sub-menu blank">
+            <li><a href="home.html" class="link-name">Dashboard</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <div class="icon-link">
+            <a href="#">
+              <i class="fab fa-codepen"></i>
+              <span class="link-name">Aboutus </span>
+            </a>
+            <i class="fas fa-caret-down arrow"></i>
+          </div>
+
+          <ul class="sub-menu">
+            <li><a href="#" class="link-name">Aboutus</a></li>
+            <li><a href="players.html" class="sub-menu-players">players</a></li>
+            <li><a href="teams.html" class="sub-menu-players">Team</a></li>
+            
+          </ul>
+        </li>
+
+        <li>
+          <div class="icon-link">
+            <a href="#">
+              <i class="fab fa-blogger"></i>
+              <span class="link-name">Matches</span>
+            </a>
+            <i class="fas fa-caret-down arrow"></i>
+          </div>
+
+          <ul class="sub-menu">
+            <li><a href="#" class="link-name">Matches</a></li>
+            <li><a href="ongoing.html" class="sub-menu-matches" id="ongoing-link">ongoing</a></li>
+            <li><a href="#" class="sub-menu-matches">Upcoming</a></li>
+        
+          </ul>
+        </li>
+
+        <li>
+          <a href="#">
+            <i class="fas fa-clock-rotate-left"></i>
+            <span class="link-name">Activity</span>
+          </a>
+
+          <ul class="sub-menu blank">
+            <li><a href="#" class="link-name">Activity</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#">
+            <i class="fas fa-heart"></i>
+            <span class="link-name">Favourite</span>
+          </a>
+
+          <ul class="sub-menu blank">
+            <li><a href="#" class="link-name">Favourite</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#">
+            <i class="fas fa-bookmark"></i>
+            <span class="link-name">Feedback</span>
+          </a>
+
+          <ul class="sub-menu blank">
+            <li><a href="#" class="link-name">Feedback</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#">
+            <i class="fas fa-address-book"></i>
+            <span class="link-name">Contacts</span>
+          </a>
+
+          <ul class="sub-menu blank">
+            <li><a href="#" class="link-name">Contacts</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#">
+            <i class="fas fa-gear"></i>
+            <span class="link-name">Settings</span>
+          </a>
+
+          <ul class="sub-menu blank">
+            <li><a href="#" class="link-name">Settings</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <div class="profile-details">
+            <div class="profile-content">
+              <img src="./assets/profile.jpg" alt="" />
+            </div>
+
+            <div class="name-job">
+              <div class="name">Mary Karen</div>
+              <div class="job">SL-Manager</div>
+            </div>
+            <i class="fas fa-right-to-bracket"></i>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="home-section">
+      <div class="home-content">
+        <i class="fas fa-bars"></i>
+        <span class="text">Dropdown Sidebar Menu</span>
+      
+         
+      </div>
+      <p class="group-content">T-20
+        The 2024 ICC Men's T20 World Cup has 20 teams competing, which is four more than the 2024 edition. The teams are divided into four groups:
+        </p>
+      <div class="groups-container">
+        <div class="group-card">
+          <h3>Group A</h3>
+          <ul>
+            <li>India</li>
+            <li>Pakistan</li>
+            <li>USA</li>
+            <li>Canada</li>
+            <li>Ireland</li>
+          </ul>
+        </div>
+      
+        <div class="group-card">
+          <h3>Group B</h3>
+          <ul>
+            <li>Australia</li>
+            <li>England</li>
+            <li>Namibia</li>
+            <li>Oman</li>
+            <li>Scotland</li>
+          </ul>
+        </div>
+      
+        <div class="group-card">
+          <h3>Group C</h3>
+          <ul>
+            <li>Afghanistan</li>
+            <li>New Zealand</li>
+            <li>Papua New Guinea</li>
+            <li>Uganda</li>
+            <li>West Indies</li>
+          </ul>
+        </div>
+      
+        <div class="group-card">
+          <h3>Group D</h3>
+          <ul>
+            <li>Bangladesh</li>
+            <li>South Africa</li>
+            <li>Sri Lanka</li>
+            <li>Nepal</li>
+            <li>Netherlands</li>
+          </ul>
+        </div>
+      </div>
+      
+    <!--here the DB code starts -->
+    <form action="/onging" method="get">
+    <h1 class="db-title">Ongoing Cricket Matches</h1>
+    <table id="matches-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Match</th>
+          <th>Time</th>
+          <th>Venue</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Rows will be inserted here by mongodb -->
+      </tbody>
+    </table>
+  </form>
+    </div>
+    <script src="server.js"></script>
+  </body>
+</html>

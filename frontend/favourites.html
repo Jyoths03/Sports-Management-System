@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Indian Cricket Players</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to right, #74ebd5, #9face6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            width: 90%;
+            max-width: 1200px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #1c4b82;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            opacity: 0;
+            animation: slideIn 0.5s forwards;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px;
+            text-align: left;
+        }
+
+        .card-content h2 {
+            font-size: 1.8em;
+            color: #007bff;
+            margin-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .card-content p {
+            font-size: 1.1em;
+            color: #555;
+            margin: 2px 0;
+        }
+
+        .card:hover h2 {
+            color: #ff4500;
+        }
+
+        .tooltip {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.75);
+            color: #fff;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .card:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .like-button {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 5px 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            z-index: 10; /* Ensure the like button is on top */
+        }
+
+        .like-button span {
+            font-size: 24px;
+            margin-right: 5px;
+        }
+
+        .like-count {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Favorite Indian Cricket Players</h1>
+        <div class="card-grid">
+            <div class="card">
+                <img src="assets/vk18.png" alt="Virat Kohli">
+                <div class="like-button" onclick="incrementLike(this)">
+                    <span>👍</span>
+                    <span class="like-count">0</span>
+                </div>
+                <div class="card-content">
+                    <h2>Virat Kohli</h2>
+                    <p>Role: Batsman</p>
+                    <p>Top Score: 183</p>
+                </div>
+                <div class="tooltip">Known for his consistency and aggressive play style.</div>
+            </div>
+            <div class="card">
+                <img src="assets/rohit.png" alt="Rohit Sharma">
+                <div class="like-button" onclick="incrementLike(this)">
+                    <span>👍</span>
+                    <span class="like-count">0</span>
+                </div>
+                <div class="card-content">
+                    <h2>Rohit Sharma</h2>
+                    <p>Role: Batsman</p>
+                    <p>Top Score: 264</p>
+                </div>
+                <div class="tooltip">Holder of the highest individual ODI score.</div>
+            </div>
+            <div class="card">
+                <img src="assets/js.png" alt="Jasprit Bumrah">
+                <div class="like-button" onclick="incrementLike(this)">
+                    <span>👍</span>
+                    <span class="like-count">0</span>
+                </div>
+                <div class="card-content">
+                    <h2>Jasprit Bumrah</h2>
+                    <p>Role: Bowler</p>
+                    <p>Best Bowling: 6/19</p>
+                </div>
+                <div class="tooltip">Known for his lethal yorkers and unique action.</div>
+            </div>
+            <div class="card">
+                <img src="assets/jd.png" alt="Ravindra Jadeja">
+                <div class="like-button" onclick="incrementLike(this)">
+                    <span>👍</span>
+                    <span class="like-count">0</span>
+                </div>
+                <div class="card-content">
+                    <h2>Ravindra Jadeja</h2>
+                    <p>Role: All-Rounder</p>
+                    <p>Best Bowling: 7/48</p>
+                </div>
+                <div class="tooltip">A brilliant fielder and dependable all-rounder.</div>
+            </div>
+            <div class="card">
+                <img src="assets/doni.png" alt="MS Dhoni">
+                <div class="like-button" onclick="incrementLike(this)">
+                    <span>👍</span>
+                    <span class="like-count">0</span>
+                </div>
+                <div class="card-content">
+                    <h2>MS Dhoni</h2>
+                    <p>Role: Wicketkeeper-Batsman</p>
+                    <p>Top Score: 183*</p>
+                </div>
+                <div class="tooltip">Captain cool, known for his finishing abilities.</div>
+            </div>
+            <div class="card">
+                <img src="assets/kl.png" alt="KL Rahul">
+                <div class="like-button" onclick="incrementLike(this)">
+                    <span>👍</span>
+                    <span class="like-count">0</span>
+                </div>
+                <div class="card-content">
+                    <h2>KL Rahul</h2>
+                    <p>Role: Batsman</p>
+                    <p>Top Score: 112</p>
+                </div>
+                <div class="tooltip">Stylish batsman with impressive technique.</div>
+            </div>
+            <div class="card">
+                <img src="assets/hp.png" alt="Hardik Pandya">
+                <div class="like-button" onclick="incrementLike(this)">
+                    <span>👍</span>
+                    <span class="like-count">0</span>
+                </div>
+                <div class="card-content">
+                    <h2>Hardik Pandya</h2>
+                    <p>Role: All-Rounder</p>
+                    <p>Top Score: 92*</p>
+                </div>
+                <div class="tooltip">A dynamic all-rounder known for big hitting.</div>
+            </div>
+            <div class="card">
+                <img src="assets/ms.png" alt="Mohammed Shami">
+                <div class="like-button" onclick="incrementLike(this)">
+                    <span>👍</span>
+                    <span class="like-count">0</span>
+                </div>
+                <div class="card-content">
+                    <h2>Mohammed Shami</h2>
+                    <p>Role: Bowler</p>
+                    <p>Best Bowling: 5/69</p>
+                </div>
+                <div class="tooltip">Known for his accuracy and pace.</div>
+            </div>
+            <div class="card">
+                <img src="assets/sd.png" alt="Shikhar Dhawan">
+                <div class="like-button" onclick="incrementLike(this)">
+                    <span>👍</span>
+                    <span class="like-count">0</span>
+                </div>
+                <div class="card-content">
+                    <h2>Shikhar Dhawan</h2>
+                    <p>Role: Batsman</p>
+                    <p>Top Score: 143</p>
+                </div>
+                <div class="tooltip">Aggressive opener with a steady record.</div>
+            </div>
+           
+          
+        </div>
+    </div>
+    <script>
+        function incrementLike(button) {
+            const likeCountSpan = button.querySelector('.like-count');
+            let likeCount = parseInt(likeCountSpan.textContent);
+            likeCount++;
+            likeCountSpan.textContent = likeCount;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fan Hub - Sports Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #0056b3;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px #d1d1d1;
+        }
+        h2 {
+            color: #333;
+            padding-bottom: 5px;
+            font-size: 1.5em;
+            position: relative;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: #0056b3;
+        }
+        .section {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .section:hover {
+            transform: translateY(-5px);
+        }
+        .button {
+            padding: 10px 15px;
+            margin-top: 10px;
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .button:hover {
+            background-color: #ff4500;
+        }
+        input[type="text"] {
+            padding: 8px;
+            width: 70%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            color: #555;
+        }
+        li {
+            margin: 10px 0;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #eaf4ff;
+            transition: background-color 0.3s;
+        }
+        li:hover {
+            background-color: #d1eaff;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Fan Hub</h1>
+
+    <!-- Player Progress & Training Schedule -->
+    <div class="section">
+        <h2>Player Progress & Training Schedule</h2>
+        <ul id="player-progress">
+            <li>Player A: Achieved a 20% increase in sprint speed.</li>
+            <li>Player B: Completed 50 hours of endurance training.</li>
+            <li>Player C: Mastered advanced dribbling drills.</li>
+        </ul>
+        <button class="button" onclick="showMoreProgress()">View More Player Stats</button>
+    </div>
+
+    <!-- Injury & Recovery Updates -->
+    <div class="section">
+        <h2>Injury & Recovery Updates</h2>
+        <ul id="injury-updates">
+            <li>Player D: Minor ankle sprain, expected return in 1 week.</li>
+            <li>Player E: Recovering from muscle strain, fitness status: under observation.</li>
+        </ul>
+        <button class="button" onclick="showMoreInjuries()">See Full Recovery Status</button>
+    </div>
+
+    <!-- Social Media Feed -->
+    <div class="section">
+        <h2>Latest from Social Media</h2>
+        <ul id="social-feed">
+            <li>🏆 "Preparing hard for the upcoming match!" - @team_official</li>
+            <li>📸 "Training day vibes with the squad!" - @player_a</li>
+            <li>🔥 "Next game predictions?" - @fanclub</li>
+        </ul>
+        <button class="button" onclick="addSocialPost()">Add New Social Post</button>
+    </div>
+
+    <div class="section">
+        <h2>Fan Challenges & Events</h2>
+        <p id="fan-challenges">🔥 Challenge: Predict the score of the upcoming game and win exclusive merchandise!</p>
+    
+        <!-- Input form for submitting a new challenge -->
+        <input type="text" id="challengeText" placeholder="Enter your Answer">
+        <input type="text" id="userName" placeholder="Your name">
+        <button class="button" onclick="submitChallenge()">Submit Challenge</button>
+    
+        <!-- Display submitted challenges -->
+        <ul id="challenge-list"></ul>
+    </div>
+    
+    <script>
+        async function submitChallenge() {
+            const challengeText = document.getElementById('challengeText').value;
+            const userName = document.getElementById('userName').value;
+    
+            const response = await fetch('http://localhost:5000/api/challenges', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ user: userName, challengeText }),
+            });
+    
+            if (response.ok) {
+                alert('Answer submitted!');
+                fetchChallenges(); // Refresh the challenges list
+            } else {
+                alert('Failed to submit challenge');
+            }
+        }
+    
+        async function fetchChallenges() {
+            const response = await fetch('http://localhost:5000/api/challenges');
+            const challenges = await response.json();
+            const challengeList = document.getElementById('challenge-list');
+            challengeList.innerHTML = '';
+    
+            challenges.forEach((challenge) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${challenge.user}: ${challenge.challengeText}`;
+                challengeList.appendChild(listItem);
+            });
+        }
+    
+        fetchChallenges(); // Load challenges when the page loads
+    </script>
+    
+
+    <!-- Hall of Fame -->
+    <div class="section">
+        <h2>Hall of Fame</h2>
+        <ul id="hall-of-fame">
+            <li>Player X: 5-time league champion</li>
+            <li>Player Y: Record for most goals in a season</li>
+            <li>Player Z: Defensive prowess and strategy</li>
+        </ul>
+        <button class="button" onclick="showMoreLegends()">Explore All Legends</button>
+    </div>
+
+    <script>
+        function showMoreProgress() {
+            const playerProgress = document.getElementById('player-progress');
+            const newProgress = document.createElement('li');
+            newProgress.textContent = "Player F: Enhanced endurance by 30% after 2 months of intense training.";
+            playerProgress.appendChild(newProgress);
+        }
+
+        function showMoreInjuries() {
+            const injuryUpdates = document.getElementById('injury-updates');
+            const newInjury = document.createElement('li');
+            newInjury.textContent = "Player G: Knee injury, expected return in 3 weeks, currently in rehab.";
+            injuryUpdates.appendChild(newInjury);
+        }
+
+        function addSocialPost() {
+            const socialFeed = document.getElementById('social-feed');
+            const newPost = document.createElement('li');
+            newPost.textContent = "⚽️ \"Countdown to match day - who's excited?\" - @team_official";
+            socialFeed.appendChild(newPost);
+        }
+
+        function submitFanPrediction() {
+            const prediction = document.getElementById('fan-prediction').value;
+            if (prediction.trim() === "") {
+                alert("Please enter a prediction.");
+                return;
+            }
+            fetch('/submit-prediction', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ prediction })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Prediction submitted successfully!");
+                    document.getElementById('fan-prediction').value = "";
+                } else {
+                    alert("Failed to submit prediction. Please try again.");
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("An error occurred. Please try again.");
+            });
+        }
+
+        function showNextChallenge() {
+            const challenges = [
+                "💡 Trivia: Who holds the record for most goals scored in a single season?",
+                "🎉 Event: Fan Q&A with the coach, happening next Friday!",
+                "🔥 Challenge: Post your best fan gear photo for a chance to win!"
+            ];
+            const currentChallenge = document.getElementById('fan-challenges');
+            const nextChallenge = challenges[Math.floor(Math.random() * challenges.length)];
+            currentChallenge.textContent = nextChallenge;
+        }
+
+        function showMoreLegends() {
+            const hallOfFame = document.getElementById('hall-of-fame');
+            const newLegend = document.createElement('li');
+            newLegend.textContent = "Player W: Known for breaking records in defensive strategies!";
+            hallOfFame.appendChild(newLegend);
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+

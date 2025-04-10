@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Management Feedback Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #eaf1f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2980b9;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        fieldset {
+            border: 2px solid #3498db;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+        }
+
+        legend {
+            font-weight: bold;
+            color: #2980b9;
+            padding: 0 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #34495e;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #2980b9;
+            outline: none;
+        }
+
+        button {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 12px;
+            font-size: 18px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #219653;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Sports Management Team Feedback Form</h1>
+    <form action="#" method="post">
+        <!-- Section 1: Personal Details -->
+        <fieldset>
+            <legend>Personal Details</legend>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="role">Role:</label>
+            <input type="text" id="role" name="role" placeholder="e.g., Athlete, Coach, Volunteer, Fan">
+        </fieldset>
+
+        <!-- Section 2: Satisfaction -->
+        <fieldset>
+            <legend>Satisfaction</legend>
+            <label>How would you rate your overall experience with the sports management team?</label>
+            <select name="overall_experience">
+                <option>Excellent</option>
+                <option>Good</option>
+                <option>Average</option>
+                <option>Poor</option>
+            </select>
+
+            <label>How likely are you to recommend our team/club to others?</label>
+            <select name="recommend">
+                <option>Very Likely</option>
+                <option>Likely</option>
+                <option>Neutral</option>
+                <option>Unlikely</option>
+                <option>Very Unlikely</option>
+            </select>
+        </fieldset>
+
+        <!-- Additional Sections -->
+        <fieldset>
+            <legend>Team Performance</legend>
+            <label>How satisfied are you with the team’s performance this season?</label>
+            <select name="team_performance">
+                <option>Very Satisfied</option>
+                <option>Satisfied</option>
+                <option>Neutral</option>
+                <option>Dissatisfied</option>
+                <option>Very Dissatisfied</option>
+            </select>
+            <label>Do you feel the team works well together?</label>
+            <select name="team_work">
+                <option>Strongly Agree</option>
+                <option>Agree</option>
+                <option>Neutral</option>
+                <option>Disagree</option>
+                <option>Strongly Disagree</option>
+            </select>
+            <label>What are the areas where you feel the team could improve?</label>
+            <textarea name="team_improvement" rows="4"></textarea>
+        </fieldset>
+
+        <!-- Continue with additional sections -->
+        <!-- ... (repeat as necessary for other sections) -->
+
+        <!-- Open Feedback -->
+        <fieldset>
+            <legend>Open Feedback</legend>
+            <label>What did you like the most about being part of this team?</label>
+            <textarea name="favorite_aspect" rows="4"></textarea>
+            
+            <label>Do you have any additional comments or suggestions for improvement?</label>
+            <textarea name="additional_comments" rows="4"></textarea>
+        </fieldset>
+
+        <button type="submit">Submit Feedback</button>
+    </form>
+    <div class="footer">Thank you for your feedback!</div>
+</div>
+
+</body>
+</html>

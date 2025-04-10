@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Management - Home with Slideshow</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="toggleArrow.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #0a1a2b;
+            color: #ffffff;
+            display: flex;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background-color: #152a49;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transition: width 0.3s;
+            color: #f0f4f8;
+        }
+
+        .sidebar .logo {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .sidebar .logo i {
+            font-size: 30px;
+        }
+
+        .sidebar .logo span {
+            font-size: 18px;
+            margin-left: 10px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul li a {
+            color: #f0f4f8;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .sidebar ul li a i {
+            margin-right: 10px;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #e94560;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .sidebar ul .sub-menu {
+    display: none; /* Keep this to hide sub-menus by default */
+}
+
+.sidebar ul li .sub-menu li {
+    margin-left: 20px; /* Indentation for submenu items */
+}
+
+/* Change active class to show submenu */
+.sidebar ul li.active .sub-menu {
+    display: block; /* Show submenu when the parent li has the 'active' class */
+}
+
+/* Optional: if you want to adjust styles for active links */
+.sidebar ul li.active > .icon-link {
+    font-weight: bold; /* Example: make active link bold */
+    color: #007bff; /* Example: change color of active link */
+}
+
+
+        /* Navbar */
+        .navbar {
+            background-color: #0d3a6f;
+            padding: 15px 20px;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-left: 250px;
+            width: calc(100% - 250px);
+            position: fixed;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar h1 {
+            font-size: 28px;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar ul li {
+            margin-left: 20px;
+        }
+
+        .navbar ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            color: #e94560;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 250px;
+            margin-top: 80px;
+            padding: 20px;
+            width: calc(100% - 250px);
+        }
+
+        /* Hero Section with Slideshow */
+        .hero {
+            position: relative;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 1;
+            background-color: #0d3a6f;
+            overflow: hidden;
+        }
+
+        .hero-text {
+            position: absolute;
+            z-index: 2;
+            font-size: 48px;
+            font-weight: 700;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .slideshow-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .slideshow-container img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            animation: slideAnimation 12s infinite;
+            top: 0;
+            left: 0;
+        }
+
+        .slideshow-container img:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .slideshow-container img:nth-child(2) {
+            animation-delay: 4s;
+        }
+
+        .slideshow-container img:nth-child(3) {
+            animation-delay: 8s;
+        }
+
+        /* Keyframes for sliding images */
+        @keyframes slideAnimation {
+            0% {
+                opacity: 0;
+            }
+            8% {
+                opacity: 1;
+            }
+            25% {
+                opacity: 1;
+            }
+            33% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* Live Scores */
+        .live-scores {
+            margin-top: 40px;
+        }
+
+        /* Fan Poll */
+        .fan-polls {
+            margin-top: 40px;
+        }
+
+        .fan-polls form {
+            margin-top: 10px;
+        }
+
+        /* Social Media Section */
+.social-media {
+    margin-top: 40px;
+    text-align: center; /* Center-align the icons */
+}
+
+.social-media a {
+    color: #f0f4f8;
+    margin: 0 10px;
+    font-size: 30px; /* Increase icon size for visibility */
+    transition: color 0.3s ease;
+}
+
+.social-media a:hover {
+    color: #e94560; /* Add a hover effect */
+}
+
+.social-media i {
+    font-size: 30px; /* Ensure icon size */
+}
+
+        /* Footer */
+        .footer {
+            background-color: #0d3a6f;
+            color: #f0f4f8;
+            padding: 15px;
+            text-align: center;
+            position: fixed;
+            width: calc(100% - 250px);
+            bottom: 0;
+            margin-left: 250px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <i class="fab fa-trade-federation"></i>
+            <span class="logo-name">Sports Mgt</span>
+        </div>
+
+        <ul class="nav-list">
+            <li>
+                <a href="#">
+                    <i class="fab fa-microsoft"></i>
+                    <span class="link-name">Dashboard</span>
+                </a>
+            </li>
+
+            <!-- About Us with Subsections -->
+            <li>
+                <div class="icon-link" onclick="toggleDropdown(this)">
+                    <a href="#">
+                        <i class="fab fa-codepen"></i>
+                        <span class="link-name">About Us</span>
+                    </a>
+                    
+                </div>
+                <ul class="sub-menu">
+                    <li><a href="players.html">Players</a></li>
+                    <li><a href="teams.html">Teams</a></li>
+                </ul>
+            </li>
+
+            <!-- Matches with Subsections -->
+            <li>
+                <div class="icon-link" onclick="toggleDropdown(this)">
+                    <a href="#">
+                        <i class="fab fa-blogger"></i>
+                        <span class="link-name">Matches</span>
+                    </a>
+                    <!-- Removed the arrow icon here if you don't want it -->
+                </div>
+                <ul class="sub-menu">
+                    <li><a href="ongoing.html">Ongoing</a></li>
+                    <li><a href="upcoming.html">Upcoming</a></li>
+                </ul>
+            </li>
+            
+            <!-- Standalone Items -->
+            <li>
+                <a href="activity.html">
+                    <i class="fas fa-tasks"></i>
+                    <span class="link-name">Activity</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="favourites.html">
+                    <i class="fas fa-heart"></i>
+                    <span class="link-name">Favorite</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="feedback.html">
+                    <i class="fas fa-comments"></i>
+                    <span class="link-name">Feedback</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="contacts.html">
+                    <i class="fas fa-address-book"></i>
+                    <span class="link-name">Contacts</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fas fa-gear"></i>
+                    <span class="link-name">Settings</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1>Sports Management</h1>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Matches</a></li>
+            <li><a href="#">Players</a></li>
+            <li><a href="#">Statistics</a></li>
+            <li><a href="#">News</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="hero">
+            <div class="hero-text">Cricket World at Your Fingertips</div>
+            <div class="slideshow-container">
+                <img src="https://t3.ftcdn.net/jpg/05/13/76/12/360_F_513761212_i3z6vHUNV0bQ8pjkBGO3yrpLg8zs4mFK.jpg" alt="Slideshow Image 1">
+                <img src="https://png.pngtree.com/thumb_back/fh260/background/20230903/pngtree-a-group-of-other-sports-items-including-a-basketball-racquet-tennis-image_13171152.jpg" alt="Slideshow Image 2">
+                <img src="https://img.freepik.com/premium-photo/top-view-frame-with-sports-attributes-copy-space_1015293-104040.jpg" alt="Slideshow Image 3">
+            </div>
+        </div>
+
+        <!-- Live Scores Section -->
+        <section class="live-scores">
+            <h2>Live Scores</h2>
+            <p>Stay updated with real-time match scores and live cricket action from around the globe.</p>
+            <!-- YouTube Live Stream Embed -->
+            <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/kVy2iYMI854?si=v3PXEptJ6SrpI1Db" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </section>
+        
+        
+
+        <!-- Fan Polls Section -->
+        <section class="fan-polls">
+            <h2>Fan Polls</h2>
+            <p>Participate in the latest polls to vote for your favorite team!</p>
+            <form action="#" method="post">
+                <label for="poll">Who will win the next match?</label><br>
+                <input type="radio" name="poll" value="team1"> Team 1<br>
+                <input type="radio" name="poll" value="team2"> Team 2<br><br>
+                <button type="submit">Vote</button>
+            </form>
+        </section>
+
+        <!-- Social Media Section -->
+<!-- Social Media Section -->
+<section class="social-media">
+    <h2>Follow Us</h2>
+    <p>Stay connected through our social media channels!</p>
+    <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+</section>
+
+    </div>
+
+    
+</body>
+</html>
+
+
+
+
